@@ -8,6 +8,7 @@ public class PaddleController : MonoBehaviour
     public KeyCode upKey;
     public KeyCode downKey;
     private Rigidbody2D rig;
+    public Collider2D ball;
 
     private void Start()
     {
@@ -35,7 +36,15 @@ public class PaddleController : MonoBehaviour
 
     private void MoveObject(Vector2 movement)
     {
-        Debug.Log("TEST: " + movement);
+       /* Debug.Log("TEST: " + movement);*/
         rig.velocity = movement;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision == ball)
+        {
+            AudioManager.instance.PlaySFX(0);
+        }
     }
 }

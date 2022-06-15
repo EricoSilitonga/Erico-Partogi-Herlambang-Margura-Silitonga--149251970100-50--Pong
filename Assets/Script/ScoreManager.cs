@@ -12,6 +12,7 @@ public class ScoreManager : MonoBehaviour
 
     public void AddRightScore(int increment)
     {
+        rightScore += increment;
         ball.ResetBall();
 
         if (rightScore >= maxScore)

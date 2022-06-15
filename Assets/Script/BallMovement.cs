@@ -24,4 +24,9 @@ public class BallMovement : MonoBehaviour
     {
         transform.position = new Vector3(resetPosition.x, resetPosition.y, this.transform.position.z);
     }
+
+    public void ActivatePUSpeedUp(float magnitude)
+    {
+        rig.velocity *= magnitude;
+    }
 }
