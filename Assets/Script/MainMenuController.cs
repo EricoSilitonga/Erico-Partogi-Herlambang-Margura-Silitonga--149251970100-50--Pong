@@ -13,6 +13,16 @@ public class MainMenuController : MonoBehaviour
         SceneManager.LoadScene("Game");
     }
 
+    public void QuitGame()
+    {
+        SceneManager.LoadScene("Main Menu");
+    }
+
+    public void CreditGame()
+    {
+        SceneManager.LoadScene("Credits");
+    }
+
     public void OpenSecret()
     {
         secret.SetActive(true);

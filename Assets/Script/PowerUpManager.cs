@@ -12,6 +12,7 @@ public class PowerUpManager : MonoBehaviour
     public int spawnInterval;
     private float timer, timerForDuration;
     public int duration;
+    private bool isRightPaddle;
 
     private List<GameObject> powerUpList;
 
@@ -25,23 +26,22 @@ public class PowerUpManager : MonoBehaviour
     private void Update()
     {
         timer += Time.deltaTime;
-        timerForDuration = Time.deltaTime;
+        timerForDuration += Time.deltaTime;
         if (timer > spawnInterval)
         {
             GenerateRandomPowerUp();
             timer -= spawnInterval;
         }
-        if(powerUpList.Count == maxPowerUpAmount)
+       
+        if(powerUpList != null)
         {
             if (timerForDuration > duration)
             {
                 RemovePowerUp(powerUpList[0]);
-                timerForDuration = 0;
+                timerForDuration -= duration;
             }
-        } else
-        {
-            timerForDuration = 0;
         }
+        
         
     }
 
@@ -90,4 +90,15 @@ public class PowerUpManager : MonoBehaviour
             RemovePowerUp(powerUpList[0]);
         }
     }
+
+    public void switchPaddle(bool temp)
+    {
+        isRightPaddle = temp;
+    }
+
+    public bool getPaddle()
+    {
+        return isRightPaddle;
+    }
+
 }
